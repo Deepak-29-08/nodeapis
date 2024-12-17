@@ -11,6 +11,11 @@ config({
     path:"./data/config.env"
 });
 
+app.use(cors({
+    origin:[process.env.FRONTEND_URI],
+    methods:["GET","POST","PUT","DELETE"],
+    credentials:true,
+}));
 app.use(cookieParser())
 app.use(express.json())
 app.use("/api/v1/users",routerRouter)
